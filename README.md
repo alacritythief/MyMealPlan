@@ -1,5 +1,9 @@
 # MyMealPlan APP
 
+## RUNNING WITH DOCKER COMPOSE
+
+* TBD
+
 ## FRONTEND: 
 
 ### Installing/Running this app locally
