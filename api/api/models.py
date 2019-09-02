@@ -29,14 +29,14 @@ class Food(models.Model):
         verbose_name_plural = 'food'
 
 class Ingredient(models.Model):
-    food = models.ForeignKey('Food', db_index_=True)
+    food = models.ForeignKey('Food', null=True, on_delete=models.SET_NULL, db_index_=True)
     quantity = models.DecimalField(max_digits=8, decimal_places=2)
     unit_type = models.CharField(max_length=255)
     created_ts = models.DateTimeField(auto_now_add=True, db_index=True)
     updated_ts = models.DateTimeField(auto_now=True, db_index=True)
 
     def __str__(self):
-        return self.name
+        return self.food.name
 
     class Meta:
         db_table = 'ingredients'
@@ -47,6 +47,9 @@ class RestrictionTag(models.Model):
     updated_ts = models.DateTimeField(auto_now=True, db_index=True)
 
     def __str__(self):
+        return self.name
+
+    class Meta:
         db_table = 'restriction_tags'
 
 class Recipe(models.Model):
@@ -57,4 +60,7 @@ class Recipe(models.Model):
     updated_ts = models.DateTimeField(auto_now=True, db_index=True)
 
     def __str__(self):
+        return self.name
+
+    class Meta:
         db_table = 'recipes'
