@@ -17,7 +17,7 @@ How much of take-home pay should be spent on groceries per week?
 
 class Food(models.Model):
     name = models.CharField(max_length=255, db_index=True)
-    unit_price = models.DecimalField(max_digits=8, decimal_places=2)
+    unit_price = models.DecimalField(max_digits=8, decimal_places=2) # Price per pound
     created_ts = models.DateTimeField(auto_now_add=True, db_index=True)
     updated_ts = models.DateTimeField(auto_now=True, db_index=True)
     
