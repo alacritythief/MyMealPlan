@@ -16,20 +16,45 @@ How much of take-home pay should be spent on groceries per week?
 '''
 
 class Food(models.Model):
-    # name
-    # price per unit
-    pass
+    name = models.CharField(max_length=255, db_index=True)
+    unit_price = models.DecimalField(max_digits=8, decimal_places=2)
+    created_ts = models.DateTimeField(auto_now_add=True, db_index=True)
+    updated_ts = models.DateTimeField(auto_now=True, db_index=True)
+    
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'food'
+        verbose_name_plural = 'food'
 
 class Ingredient(models.Model):
-    # food
-    # quantity
-    # unit
-    pass
+    food = models.ForeignKey('Food', db_index_=True)
+    quantity = models.DecimalField(max_digits=8, decimal_places=2)
+    unit_type = models.CharField(max_length=255)
+    created_ts = models.DateTimeField(auto_now_add=True, db_index=True)
+    updated_ts = models.DateTimeField(auto_now=True, db_index=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'ingredients'
 
 class RestrictionTag(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, db_index=True)
+    created_ts = models.DateTimeField(auto_now_add=True, db_index=True)
+    updated_ts = models.DateTimeField(auto_now=True, db_index=True)
+
+    def __str__(self):
+        db_table = 'restriction_tags'
 
 class Recipe(models.Model):
-    # name
-    # ingredients
-    pass
+    name = models.CharField(max_length=255, db_index=True)
+    ingredients = models.ManyToManyField('Ingredient')
+    restrictions = models.ManyToManyField('RestrictionTag')
+    created_ts = models.DateTimeField(auto_now_add=True, db_index=True)
+    updated_ts = models.DateTimeField(auto_now=True, db_index=True)
+
+    def __str__(self):
+        db_table = 'recipes'
