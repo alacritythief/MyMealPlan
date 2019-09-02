@@ -29,7 +29,7 @@ class Food(models.Model):
         verbose_name_plural = 'food'
 
 class Ingredient(models.Model):
-    food = models.ForeignKey('Food', null=True, on_delete=models.SET_NULL, db_index_=True)
+    food = models.ForeignKey('Food', null=True, on_delete=models.SET_NULL, db_index=True)
     quantity = models.DecimalField(max_digits=8, decimal_places=2)
     unit_type = models.CharField(max_length=255)
     created_ts = models.DateTimeField(auto_now_add=True, db_index=True)
