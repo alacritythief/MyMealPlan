@@ -16,6 +16,10 @@
 
 ## BACKEND: 
 
+### Django Admin:
+* Superuser: HeadChef
+* Password: SousVideEverything
+
 ### Installing/Running this app locally
 
 * TBD
