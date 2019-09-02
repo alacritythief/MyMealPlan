@@ -54,10 +54,18 @@ class RestrictionTag(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=255, db_index=True)
+    meal_type = models.CharField(max_length=255, blank=True, db_index=True) # breakfast, lunch, dinner, etc
     ingredients = models.ManyToManyField('Ingredient')
     restrictions = models.ManyToManyField('RestrictionTag')
     created_ts = models.DateTimeField(auto_now_add=True, db_index=True)
     updated_ts = models.DateTimeField(auto_now=True, db_index=True)
+
+    @property
+    def total_cost(self):
+        total = 0
+        for ingredient in self.ingredients.all():
+            total += (ingredient.food.unit_price * ingredient.quantity)
+        return total
 
     def __str__(self):
         return self.name
