@@ -4,6 +4,7 @@ from .models import Food, Ingredient, RestrictionTag, Recipe
 
 # Create your tests here.
 
+### MODEL TESTS ###
 class FoodTestCase(TestCase):
     def setUp(self):
         Food.objects.create(
@@ -108,6 +109,7 @@ class RecipeTestCase(TestCase):
         pecan_pie.restrictions.add(allergy)
         pecan_pie.save()
 
+    # Check if recipe contains Pecans and has a Peanut allergy restriction
     def test_recipe_values(self):
         allergy = RestrictionTag.objects.get(name='Peanuts')
         pecan_ingredient = Ingredient.objects.get(food__name='Pecan')
