@@ -1,5 +1,5 @@
 from django.test import TestCase
-from decimal import *
+from decimal import Decimal
 from .models import Food, Ingredient, RestrictionTag, Recipe
 
 # Create your tests here.
