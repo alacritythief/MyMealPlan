@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django_filters',
 
     # CUSTOM APPS:
-    'api'
+    'api',
+    'lib'
 ]
 
 MIDDLEWARE = [
