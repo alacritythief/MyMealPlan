@@ -42,10 +42,9 @@ class RecipeViewSet(viewsets.ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ('__all__')
 
-    # Results based on budget
     def get_queryset(self):
         budget = self.request.query_params.get('budget', None)
-        if budget is not None:
+        if budget is not None: # Results based on budget
             query = Q()
             selected_budget_type = determine_weekly_food_budget_plan(float(budget))
             for budget_type in USDA_FOOD_PLANS.keys():
