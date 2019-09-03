@@ -16,7 +16,8 @@ class BudgetForm extends React.Component {
   changePaycheck = (event) => {
     let paycheckAmt = event.target.value;
     this.setState({
-      paycheckValue: paycheckAmt
+      paycheckValue: paycheckAmt,
+      realPaycheckValue: paycheckAmt
     })
     this.props.paycheckAmtCallback(paycheckAmt)
   }

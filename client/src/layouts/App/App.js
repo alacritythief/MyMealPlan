@@ -3,6 +3,8 @@ import BudgetForm from '../../components/BudgetForm';
 import { AppContainer } from '../../styled/containers';
 import { LogoText } from '../../styled/text';
 
+const RECIPE_URL = 'http://localhost:8000/v1/recipes/';
+
 class App extends React.Component {
   constructor (props) {
     super(props);
@@ -18,6 +20,7 @@ class App extends React.Component {
     this.setState({
       paycheckAmt: paycheckAmt
     })
+    this.fetchRecipes()
   }
 
   restrictionsCallback = (resList) => {
@@ -25,6 +28,25 @@ class App extends React.Component {
     this.setState({
       restrictions: restrictions
     })
+    this.fetchRecipes()
+  }
+
+  fetchRecipes = () => {
+    let url = RECIPE_URL;
+    url = url + '?budget=' + this.state.paycheckAmt;
+    if (this.state.restrictions !== []) {
+      url = url + '&allergies=' + this.state.restrictions.toString()
+    }
+
+    fetch(url).then(
+      res => res.json()
+    ).then(
+      json => {
+        this.setState({
+          recipes: json
+        })
+      }
+    )
   }
 
   render () {
