@@ -44,12 +44,20 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         budget = self.request.query_params.get('budget', None)
+        allergies = self.request.query_params.get('allergies', None)
+
         if budget is not None: # Results based on budget
-            query = Q()
+            budget_query = Q()
             selected_budget_type = determine_weekly_food_budget_plan(float(budget))
             for budget_type in USDA_FOOD_PLANS.keys():
-                query = query | Q(budget_type=budget_type)
+                budget_query = budget_query | Q(budget_type=budget_type)
                 if budget_type == selected_budget_type:
                     break
-            self.queryset = self.queryset.filter(query)
+            self.queryset = self.queryset.filter(budget_query)
+
+        if allergies is not None: # Results based on allergies
+            allergy_list = allergies.split(',')
+            for allergy in allergy_list:
+                self.queryset = self.queryset.exclude(restrictions__name=allergy)
+            
         return self.queryset

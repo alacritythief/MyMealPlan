@@ -36,7 +36,7 @@ class Ingredient(models.Model):
     updated_ts = models.DateTimeField(auto_now=True, db_index=True)
 
     def __str__(self):
-        return self.food.name
+        return self.food.name + ': ' + "%s %s" % (self.quantity, self.unit_type)
 
     class Meta:
         db_table = 'ingredients'
