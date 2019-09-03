@@ -1,4 +1,5 @@
-# MyMealPlan APP
+# MyMealPlan App
+Code challenge by Andy Wong
 
 ## RUNNING WITH DOCKER COMPOSE
 
