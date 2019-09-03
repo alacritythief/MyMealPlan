@@ -82,7 +82,7 @@ class Recipe(models.Model):
         return '$' + '%.2f' % (total)
 
     def __str__(self):
-        return self.name
+        return self.name + ': ' + self.total_cost
 
     class Meta:
         db_table = 'recipes'
