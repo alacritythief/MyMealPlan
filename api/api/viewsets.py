@@ -53,6 +53,3 @@ class RecipeViewSet(viewsets.ModelViewSet):
                     break
             self.queryset = self.queryset.filter(query)
         return self.queryset
-            
-            
-
