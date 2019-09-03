@@ -92,7 +92,7 @@ class BudgetForm extends React.Component {
         Weekly Paycheck amount:<br/>
         <PaycheckInput 
           type="text"
-          placeholder="Enter weekly or bi-weekly paycheck amount"
+          placeholder="Enter weekly or biweekly paycheck amount"
           value={ this.state.payCheckValue }
           onChange={ this.changePaycheck }
           onKeyUp={ this.handlePaycheck }
@@ -103,7 +103,7 @@ class BudgetForm extends React.Component {
           name="biweekly-toggle"
           value={ this.state.biweeklyToggle }
           onChange={ this.handleBiweekly }
-        />Biweekly paycheck<br/><br/>
+        />Biweekly Paycheck<br/><br/>
 
         <RestrictionsText>Restrictions:</RestrictionsText>
         <ul>

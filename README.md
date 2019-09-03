@@ -9,6 +9,7 @@ Code challenge by Andy Wong
 
 ### Installing/Running the frontend locally
 
+* The frontend uses NodeJS v10.16.1
 * Make sure you have NodeJS installed, we suggest using [NVM](https://github.com/nvm-sh/nvm)
 * Clone this repo via git: `git clone https://github.com/alacritythief/MyMealPlan.git`
 * Enter the repo's client folder `cd MyMealPlan/client` and `npm install` to install dependencies 
