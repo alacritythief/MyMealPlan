@@ -34,6 +34,11 @@
 
 ### Installing/Running the backend locally
 
+### Docker Compose:
+* cd `MyMealPlan/api` and `docker-compose -f docker-compose.dev.yml up`
+
+### Manual Process:
+
 **Make sure python, pip, setuptools, virtualenv, and virtualenvwrapper are up-to-date:**
 
 **Installing Python 3.7:**

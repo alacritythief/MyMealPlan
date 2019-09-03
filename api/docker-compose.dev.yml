@@ -1,0 +1,12 @@
+version: '3'
+services:
+  api:
+    build: .
+    image: mymealplan-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/app/api
+      - ./base:/app/base
+      - ./lib:/app/lib
+    command: /bin/sh -c "DEBUG=True python3 manage.py runserver_plus 0.0.0.0:8000"
