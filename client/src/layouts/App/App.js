@@ -20,7 +20,7 @@ class App extends React.Component {
     this.setState({
       paycheckAmt: paycheckAmt
     })
-    this.fetchRecipes()
+    this.fetchRecipes(amt, this.state.restrictions)
   }
 
   restrictionsCallback = (resList) => {
@@ -28,14 +28,14 @@ class App extends React.Component {
     this.setState({
       restrictions: restrictions
     })
-    this.fetchRecipes()
+    this.fetchRecipes(this.state.paycheckAmt, restrictions)
   }
 
-  fetchRecipes = () => {
+  fetchRecipes = (amt, restrictions) => {
     let url = RECIPE_URL;
-    url = url + '?budget=' + this.state.paycheckAmt;
-    if (this.state.restrictions !== []) {
-      url = url + '&allergies=' + this.state.restrictions.toString()
+    url = url + '?budget=' + amt;
+    if (restrictions !== []) {
+      url = url + '&allergies=' + restrictions.toString()
     }
 
     fetch(url).then(
