@@ -70,7 +70,7 @@ class Recipe(models.Model):
     meal_type = models.CharField(max_length=255, blank=True, choices=MEAL_TYPES, db_index=True) # breakfast, lunch, dinner, etc
     budget_type = models.CharField(max_length=255, default='medium', choices=BUDGET_TYPE_CHOICES, db_index=True) # verylow, low, medium, high
     ingredients = models.ManyToManyField('Ingredient')
-    restrictions = models.ManyToManyField('RestrictionTag')
+    restrictions = models.ManyToManyField('RestrictionTag', blank=True)
     created_ts = models.DateTimeField(auto_now_add=True, db_index=True)
     updated_ts = models.DateTimeField(auto_now=True, db_index=True)
 
