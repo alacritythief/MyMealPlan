@@ -9,3 +9,8 @@ export const PaycheckInput = styled.input`
   padding: 0.5rem;
   width: 100%;
 `
+
+export const RestrictionListItem = styled.li`
+  list-style-type: none;
+  padding: 0.2rem 0;
+`
