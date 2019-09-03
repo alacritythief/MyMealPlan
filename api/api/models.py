@@ -36,7 +36,7 @@ class Ingredient(models.Model):
     updated_ts = models.DateTimeField(auto_now=True, db_index=True)
 
     def __str__(self):
-        return self.food.name
+        return self.food.name + ': ' + "%s %s" % (self.quantity, self.unit_type)
 
     class Meta:
         db_table = 'ingredients'
@@ -53,10 +53,24 @@ class RestrictionTag(models.Model):
         db_table = 'restriction_tags'
 
 class Recipe(models.Model):
+    BUDGET_TYPE_CHOICES = [
+        ('verylow', 'Very Low'),
+        ('low', 'Low'),
+        ('medium', 'Medium'),
+        ('high', 'High')
+    ]
+
+    MEAL_TYPES = [
+        ('breakfast', 'Breakfast'),
+        ('lunch', 'Lunch'),
+        ('dinner', 'Dinner')
+    ]
+
     name = models.CharField(max_length=255, db_index=True)
-    meal_type = models.CharField(max_length=255, blank=True, db_index=True) # breakfast, lunch, dinner, etc
+    meal_type = models.CharField(max_length=255, blank=True, choices=MEAL_TYPES, db_index=True) # breakfast, lunch, dinner, etc
+    budget_type = models.CharField(max_length=255, default='medium', choices=BUDGET_TYPE_CHOICES, db_index=True) # verylow, low, medium, high
     ingredients = models.ManyToManyField('Ingredient')
-    restrictions = models.ManyToManyField('RestrictionTag')
+    restrictions = models.ManyToManyField('RestrictionTag', blank=True)
     created_ts = models.DateTimeField(auto_now_add=True, db_index=True)
     updated_ts = models.DateTimeField(auto_now=True, db_index=True)
 
@@ -65,10 +79,10 @@ class Recipe(models.Model):
         total = 0
         for ingredient in self.ingredients.all():
             total += (ingredient.food.unit_price * ingredient.quantity)
-        return total
+        return '$' + '%.2f' % (total)
 
     def __str__(self):
-        return self.name
+        return self.name + ': ' + self.total_cost
 
     class Meta:
         db_table = 'recipes'
