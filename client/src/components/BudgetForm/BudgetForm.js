@@ -7,6 +7,7 @@ class BudgetForm extends React.Component {
     super(props);
     this.state = {
       paycheckValue: '',
+      realPaycheckValue: '',
       biweeklyToggle: false,
       restrictions: []
     }
@@ -28,14 +29,15 @@ class BudgetForm extends React.Component {
   handleBiweekly = (event) => {
     if (event.target.checked) {
       this.setState({
-        biweeklyToggle: true
+        biweeklyToggle: true,
+        realPaycheckValue: this.state.paycheckValue / 2
       })
     } else {
       this.setState({
-        biweeklyToggle: false
+        biweeklyToggle: false,
+        realPaycheckValue: this.state.paycheckValue
       })
     }
-    
   }
 
   changeRestriction = (event) => {
@@ -104,6 +106,8 @@ class BudgetForm extends React.Component {
           Debug:<br/>
           Paycheck Value:<br/>
           { this.state.paycheckValue }<br/>
+          Real Paycheck Value:<br/>
+          { this.state.realPaycheckValue }<br/>
           Biweekly Toggle:<br/>
           { this.state.biweeklyToggle.toString() }<br/>
           Restrictions:<br/>
