@@ -45,5 +45,5 @@ interview.
 **Provide a few sentences for the following questions:**
 
 1. Why did you select the chosen frontend and backend tech?
-1. What are some limitations of the technology you’ve chosen?
-1. How would you change the user stories or proposed functionality to better align with the product goal?
+2. What are some limitations of the technology you’ve chosen?
+3. How would you change the user stories or proposed functionality to better align with the product goal?
