@@ -79,7 +79,7 @@ class Recipe(models.Model):
         total = 0
         for ingredient in self.ingredients.all():
             total += (ingredient.food.unit_price * ingredient.quantity)
-        return total
+        return '$' + '%.2f' % (total)
 
     def __str__(self):
         return self.name

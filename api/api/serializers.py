@@ -13,7 +13,7 @@ class IngredientSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
 
     class Meta:
         model = Ingredient
-        fields = ('__all__')
+        fields = '__all__'
 
 class RestrictionTagSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
     class Meta:
@@ -23,6 +23,7 @@ class RestrictionTagSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
 class RecipeSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
     ingredients = IngredientSerializer(many=True)
     restrictions = RestrictionTagSerializer(many=True)
+    total_cost = serializers.ReadOnlyField()
 
     class Meta:
         model = Recipe
