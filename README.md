@@ -1,5 +1,5 @@
 # MyMealPlan App
-**Code Challenge by Andy Wong***
+**Code Challenge by Andy Wong**
 
 ## Answers to Challenge Questions:
 
