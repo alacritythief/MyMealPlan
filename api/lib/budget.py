@@ -32,7 +32,3 @@ def determine_weekly_food_budget_plan(amount):
         if v < budget:
             plan = k
     return plan
-
-def determine_meals(plan):
-    results = Recipe.objects.filter(budget_type=plan)
-    return results
