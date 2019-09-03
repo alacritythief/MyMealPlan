@@ -1,0 +1,18 @@
+version: '3'
+services:
+  mymealplan_api:
+    build: ./api
+    image: api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/api
+    command: /bin/sh -c "DEBUG=True python3 manage.py runserver_plus 0.0.0.0:8000"
+  mymealplan_ui:
+    build: ./client
+    image: client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/client
+    command: bash -c "cd /client && npm start"

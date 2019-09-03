@@ -1,8 +1,8 @@
 version: '3'
 services:
-  api:
+  mymealplan-api:
     build: .
-    image: mymealplan-api
+    image: api
     ports:
       - "8000:8000"
     volumes:
