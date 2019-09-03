@@ -6,6 +6,7 @@ export const PaycheckInput = styled.input`
   border: 1px solid ${c.BLACK};
   border-radius: 0.2rem;
   font-size: 1rem;
+  margin: 0.2rem 0;
   padding: 0.5rem;
   width: 100%;
 `

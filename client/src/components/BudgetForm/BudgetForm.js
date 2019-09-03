@@ -1,6 +1,7 @@
 import React from 'react';
 import { BudgetContainer } from '../../styled/containers';
 import { PaycheckInput, RestrictionListItem } from '../../styled/forms';
+import { RestrictionsText } from '../../styled/text';
 
 class BudgetForm extends React.Component {
   constructor (props) {
@@ -66,7 +67,7 @@ class BudgetForm extends React.Component {
   }
 
   renderRestrictions = () => {
-    let restrictions = ['peanut', 'dairy', 'egg']
+    let restrictions = ['peanut', 'dairy', 'egg', 'meat']
     let renderRestrictionList = []
 
     restrictions.forEach((key) => {
@@ -102,24 +103,12 @@ class BudgetForm extends React.Component {
           name="biweekly-toggle"
           value={ this.state.biweeklyToggle }
           onChange={ this.handleBiweekly }
-        />Biweekly paycheck<br/>
+        />Biweekly paycheck<br/><br/>
 
-        <h3>Restrictions:</h3>
+        <RestrictionsText>Restrictions:</RestrictionsText>
         <ul>
           { this.renderRestrictions() }
         </ul>
-
-        <p>
-          Debug:<br/>
-          Paycheck Value:<br/>
-          { this.state.paycheckValue }<br/>
-          Real Paycheck Value:<br/>
-          { this.state.realPaycheckValue }<br/>
-          Biweekly Toggle:<br/>
-          { this.state.biweeklyToggle.toString() }<br/>
-          Restrictions:<br/>
-          { this.state.restrictions.toString() }
-        </p>
       </BudgetContainer>
     )
   }

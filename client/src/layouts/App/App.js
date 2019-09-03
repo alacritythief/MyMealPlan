@@ -1,6 +1,7 @@
 import React from 'react';
 import BudgetForm from '../../components/BudgetForm';
-import { AppContainer } from '../../styled/containers';
+import RecipeCard from '../../components/RecipeCard';
+import { AppContainer, RecipeContainer } from '../../styled/containers';
 import { LogoText } from '../../styled/text';
 
 const RECIPE_URL = 'http://localhost:8000/v1/recipes/';
@@ -49,14 +50,35 @@ class App extends React.Component {
     )
   }
 
+  renderRecipes = () => {
+    let recipeCardList = []
+    if (this.state.recipes !== null) {
+      this.state.recipes.results.forEach((recipe) => {
+        recipeCardList.push(
+          <RecipeCard
+            name={ recipe.name }
+            mealType={ recipe.meal_type}
+            ingredients={ recipe.ingredients }
+            cost={ recipe.total_cost }
+          />
+        )
+      })
+      return recipeCardList;
+    }
+    return null;
+  }
+
   render () {
     return (
       <AppContainer>
-        <LogoText>MyMealPlan</LogoText>
+        <LogoText>MyMealPlan</LogoText> 
         <BudgetForm 
           paycheckAmtCallback={ this.paycheckAmtCallback }
           restrictionsCallback={ this.restrictionsCallback }
         />
+        <RecipeContainer>
+          { this.renderRecipes() }
+        </RecipeContainer>
       </AppContainer>
     );
   }
