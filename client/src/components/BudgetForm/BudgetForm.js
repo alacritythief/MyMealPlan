@@ -18,6 +18,7 @@ class BudgetForm extends React.Component {
     this.setState({
       paycheckValue: paycheckAmt
     })
+    this.props.paycheckAmtCallback(paycheckAmt)
   }
 
   handlePaycheck = (event) => {
@@ -32,11 +33,13 @@ class BudgetForm extends React.Component {
         biweeklyToggle: true,
         realPaycheckValue: this.state.paycheckValue / 2
       })
+      this.props.paycheckAmtCallback(this.state.paycheckValue / 2)
     } else {
       this.setState({
         biweeklyToggle: false,
         realPaycheckValue: this.state.paycheckValue
       })
+      this.props.paycheckAmtCallback(this.state.paycheckValue)
     }
   }
 
@@ -44,6 +47,7 @@ class BudgetForm extends React.Component {
     let currentRestrictionsList = this.state.restrictions;
     const checkBoxItem = event.target.value;
     const isChecked = event.target.checked;
+
     if (currentRestrictionsList.includes(checkBoxItem) === true) {
       if (isChecked === false) {
         currentRestrictionsList.splice(currentRestrictionsList.indexOf(checkBoxItem), 1 )
@@ -53,9 +57,11 @@ class BudgetForm extends React.Component {
         currentRestrictionsList.push(checkBoxItem)
       }
     }
+    
     this.setState({
       restrictions: currentRestrictionsList
-    })
+    });
+    this.props.restrictionsCallback(currentRestrictionsList);
   }
 
   renderRestrictions = () => {
@@ -97,7 +103,7 @@ class BudgetForm extends React.Component {
           onChange={ this.handleBiweekly }
         />Biweekly paycheck<br/>
 
-        Restrictions:
+        <h3>Restrictions:</h3>
         <ul>
           { this.renderRestrictions() }
         </ul>

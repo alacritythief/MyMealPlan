@@ -7,17 +7,34 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      budget: 0,
+      paycheckAmt: 0,
       restrictions: [],
       recipes: null
     }
+  }
+
+  paycheckAmtCallback = (amt) => {
+    let paycheckAmt = amt;
+    this.setState({
+      paycheckAmt: paycheckAmt
+    })
+  }
+
+  restrictionsCallback = (resList) => {
+    let restrictions = resList;
+    this.setState({
+      restrictions: restrictions
+    })
   }
 
   render () {
     return (
       <AppContainer>
         <LogoText>MyMealPlan</LogoText>
-        <BudgetForm />
+        <BudgetForm 
+          paycheckAmtCallback={ this.paycheckAmtCallback }
+          restrictionsCallback={ this.restrictionsCallback }
+        />
       </AppContainer>
     );
   }
