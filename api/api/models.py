@@ -53,9 +53,22 @@ class RestrictionTag(models.Model):
         db_table = 'restriction_tags'
 
 class Recipe(models.Model):
+    BUDGET_TYPE_CHOICES = [
+        ('verylow', 'Very Low'),
+        ('low', 'Low'),
+        ('medium', 'Medium'),
+        ('high', 'High')
+    ]
+
+    MEAL_TYPES = [
+        ('breakfast', 'Breakfast'),
+        ('lunch', 'Lunch'),
+        ('dinner', 'Dinner')
+    ]
+
     name = models.CharField(max_length=255, db_index=True)
-    meal_type = models.CharField(max_length=255, blank=True, db_index=True) # breakfast, lunch, dinner, etc
-    budget_type = models.CharField(max_length=255, blank=True, db_index=True) # verylow, low, medium, high
+    meal_type = models.CharField(max_length=255, blank=True, choices=MEAL_TYPES, db_index=True) # breakfast, lunch, dinner, etc
+    budget_type = models.CharField(max_length=255, default='medium', choices=BUDGET_TYPE_CHOICES, db_index=True) # verylow, low, medium, high
     ingredients = models.ManyToManyField('Ingredient')
     restrictions = models.ManyToManyField('RestrictionTag')
     created_ts = models.DateTimeField(auto_now_add=True, db_index=True)

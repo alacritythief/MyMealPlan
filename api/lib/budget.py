@@ -13,6 +13,9 @@ In a production app, we'd add features like fine tuning a user's budget preferen
 
 I'm using a really rounded version of USDA_FOOD_PLANS to make a determination on
 how cheap we'd want to be for food.
+
+We put this code in the backend because we don't want this logic to be revealed
+via the client side.
 '''
 
 USDA_FOOD_PLANS = {
