@@ -9,8 +9,8 @@
 ### Installing/Running the frontend locally
 
 * Make sure you have NodeJS installed, we suggest using [NVM](https://github.com/nvm-sh/nvm)
-* Clone this repo via git: `git clone https://gitlab.com/mathhomework/maps/map.git`
-* Enter the repo's folder and `npm install` to install dependencies 
+* Clone this repo via git: `git clone https://github.com/alacritythief/MyMealPlan.git`
+* Enter the repo's client folder `cd MyMealPlan/client` and `npm install` to install dependencies 
 * `npm start` to run the app in dev mode.
 * Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
@@ -52,8 +52,8 @@
 * Make sure Python, pip, setuptools, Virtualenv, and Virtualenvwrapper, are installed and up-to-date. Please see the **Before Setup** section above.
 * `mkvirtualenv MyMealPlan` to create your initial Python environment.
 * In the future, you can set your virtualenv by using `workon MyMealPlan` now that it has been created.
-* Clone this repo into the directory of your choice.
-* Enter the main directory of your project `cd MyMealPlan` and run: `pip3 install -r requirements.txt`
+* Clone this repo into the directory of your choice `git clone https://github.com/alacritythief/MyMealPlan.git`.
+* Enter the main directory of the API with `cd MyMealPlan/api` and run: `pip3 install -r requirements.txt`
 * Launch the backend server with `./manage.py runserver`.
 * You can launch into debug mode with `DEBUG=True ./manage.py runserver`
 * You can access the root API at [http://localhost:8000/v1/](http://localhost:8000/v1/)
