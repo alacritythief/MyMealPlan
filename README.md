@@ -5,17 +5,19 @@
 
 1. **Why did you select the chosen frontend and backend tech?**
   * React w/ Styled Components and Django w/ Django Rest Framework are the tools I'm most familiar with.
-  * Both allow me to set up projects quickly and create a structure that has enough room for complexity.
+  * I did not go with TypeScript for the sake of time. It's great in a production app but can hinder rapid prototyping.
+  * Both React and Django allow me to set up projects quickly and create a structure that has enough room for complexity.
   * Django allows me to do more complex data filtering and querying with it's ORM and the Admin interface allows me 
   to easily create initial recipes without having to type them in painfully by hand.
   * Serialization, Viewsets, and pagination are made a lot easier by DRF. If I used Flask I'd have to make everything
   from near scratch and they wouldn't work as well together.
 2. **What are some limitations of the technology you’ve chosen?**
   * With Django/DRF there can be possible slowness, due to Python's speed as a language or framework bloat.
-  * This can be mitigated somewhat with refactoring and if you use Gunicorn and create several service workers
+  * This can be mitigated somewhat with refactoring and if you use Gunicorn to create several service workers
   to handle many requests.
   * Aside from Django, most API bottlenecks can be due to the database and if there is a lack of indexing.
   * I've used Sqlite3 as the database for easy demoing, but for a live environment I'd use Postgres or MySQL.
+  * Right now the database is as fast as your file system since it's a local file.
 3. **How would you change the user stories or proposed functionality to better align with the product goal?**
   * Allow the user to define budget percentages. I used 10% of their weekly paycheck to determine what recipes would show, 
   but it would be better if the user could adjust that percent with a slider or input.
