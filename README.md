@@ -26,7 +26,15 @@
   * If recipe directions were added, I would certainly add measurement conversion methods to help the user choose 
   whether they wanted to use standard or metric amounts. For the sake of time, I did not include them.
 
-## RUNNING WITH DOCKER COMPOSE
+## Additional Afterthoughts:
+* My main focus overall was to build a basic functioning MVP in a short time frame, I had about a day of time
+  slotted to work on this.
+* I would liked to add more tests in the frontend, but that would take up more time. The majority of tests are in the 
+  backend since that's where a lot of the logic is.
+* I created a pretty basic solution for suggesting recipes, I decided not to focus too much on this because this could be    refined over time in an actual project. It's easy to get absorbed in that process and waste time when your goal is making
+  a presentable proof-of-concept.
+
+## RUNNING FRONTEND AND BACKEND WITH DOCKER-COMPOSE
 
 * Make sure you have docker installed: https://hub.docker.com/editions/community/docker-ce-desktop-mac
 * In the root folder of the project, run: `docker-compose -f docker-compose.dev.yml up`
@@ -67,15 +75,10 @@
 * `http://localhost:8000/v1/recipes/?allergies=peanut,dairy`
 * The above filters out recipes that contain dairy and peanuts.
 
-### Running Tests:
+### RUNNING TESTS:
 * You can run tests for the backend in the `/api/` folder via `./manage.py test`
 
 ### Installing/Running the backend locally
-
-### Docker Compose for only backend:
-* cd `MyMealPlan/api` and `docker-compose -f docker-compose.dev.yml up`
-
-### Manual Process:
 
 **Make sure python, pip, setuptools, virtualenv, and virtualenvwrapper are up-to-date:**
 

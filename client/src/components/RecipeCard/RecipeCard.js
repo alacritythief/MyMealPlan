@@ -7,7 +7,7 @@ class RecipeCard extends React.Component {
     let ingredientsArray = [];
     list.forEach((item) => {
       ingredientsArray.push(
-        <li>{ item.food.name + ' - ' + item.quantity + ' ' + item.unit_type }</li>
+        <li key={ item.food.id }>{ item.food.name + ' - ' + item.quantity + ' ' + item.unit_type }</li>
       )
     })
     return ingredientsArray;
