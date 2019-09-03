@@ -9,8 +9,12 @@ class BudgetTestCase(TestCase):
         plan_b = determine_weekly_food_budget_plan(600)
         plan_c = determine_weekly_food_budget_plan(800)
         plan_d = determine_weekly_food_budget_plan(1000)
+        plan_z = determine_weekly_food_budget_plan(10)
 
         self.assertEqual(plan_a, 'verylow')
         self.assertEqual(plan_b, 'low')
         self.assertEqual(plan_c, 'medium')
         self.assertEqual(plan_d, 'high')
+
+        # should default to verylow regardless if user has not much money
+        self.assertEqual(plan_z, 'verylow') 

@@ -1,4 +1,3 @@
-from decimal import Decimal
 from api.models import Recipe
 
 '''
